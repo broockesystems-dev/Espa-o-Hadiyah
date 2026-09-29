@@ -64,7 +64,7 @@ function StageItems({ items, className = "", large = false }: { items: string[];
 function BigNumber({ value, className = "" }: { value: string; className?: string }) {
   return (
     <NumberReveal
-      className={`display pointer-events-none block select-none leading-[0.8] text-gold/25 tabular-nums ${className}`}
+      className={`display pointer-events-none block select-none leading-[0.8] text-gold/25 ${className}`}
     >
       {value}
     </NumberReveal>
@@ -76,8 +76,7 @@ export function Callout({ callout }: { callout: StageCallout }) {
     <Reveal delay={0.2}>
       <aside aria-label={callout.title} className="relative bg-green px-8 py-10 text-cream md:px-10 md:py-12">
         <span aria-hidden="true" className="absolute left-8 top-0 h-10 w-px bg-gold md:left-10" />
-        <p className="label-sm text-gold">Em destaque</p>
-        <h3 className="display mt-4 text-[30px] leading-[1.05] lg:text-[34px]">
+        <h3 className="display text-[30px] leading-[1.05] lg:text-[34px]">
           <em>{callout.title}</em>
         </h3>
         <p className="mt-5 text-[14px] leading-[1.85] text-cream/80">{callout.text}</p>
@@ -93,7 +92,7 @@ export function Callout({ callout }: { callout: StageCallout }) {
 function TextLeft({ stage }: { stage: WeddingStage }) {
   return (
     <div className="grid-editorial items-start">
-      <BigNumber value={stage.number} className="col-span-full -mb-6 text-[120px] lg:col-span-2 lg:mb-0 lg:text-[200px]" />
+      <BigNumber value={stage.number} className="col-span-full mb-8 text-[120px] lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:mb-0 lg:text-[200px]" />
       <div className="col-span-full lg:col-span-5 lg:col-start-2 lg:row-start-1 lg:pt-40">
         <StageHeading stage={stage} />
         <StageItems items={stage.items} className="mt-12 lg:mt-16 lg:max-w-[30rem]" />
@@ -172,7 +171,7 @@ function ImageLeft({ stage }: { stage: WeddingStage }) {
   return (
     <div className="grid-editorial items-end">
       <div className="col-span-full lg:col-span-5 lg:col-start-8 lg:row-start-1">
-        <BigNumber value={stage.number} className="mb-6 text-[120px] lg:text-[170px]" />
+        <BigNumber value={stage.number} className="mb-10 text-[120px] lg:text-[170px]" />
         <StageHeading stage={stage} size="md" />
         <StageItems items={stage.items} className="mt-12" />
       </div>
@@ -244,7 +243,7 @@ function Quiet({ stage }: { stage: WeddingStage }) {
         </div>
       )}
       <div className="col-span-full lg:col-span-5 lg:col-start-7">
-        <BigNumber value={stage.number} className="mb-8 text-[120px] lg:text-[160px]" />
+        <BigNumber value={stage.number} className="mb-12 text-[120px] lg:text-[160px]" />
         <StageHeading stage={stage} size="md" />
         <StageItems items={stage.items} large className="mt-12 lg:mt-16" />
       </div>

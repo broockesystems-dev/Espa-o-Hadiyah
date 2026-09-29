@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import type { WeddingStage } from "@/data/weddingTimeline";
 import { ImageReveal } from "./ImageReveal";
 import ProductionTimeline from "./ProductionTimeline";
@@ -11,29 +11,33 @@ import { NumberReveal, Reveal, RevealItem } from "./Reveal";
 /** Etapa 09 — o clímax: blush dissolve em verde profundo. */
 export default function GrandDay({ stage }: { stage: WeddingStage }) {
   const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 25%"] });
-  const background = useTransform(scrollYProgress, [0, 1], ["#F3E1DF", "#104840"]);
+  // A blush veil dissolves as the section arrives; with reduced motion it is never shown.
+  const veil = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <motion.section
+    <section
       ref={ref}
       id={stage.id}
       tabIndex={-1}
       aria-labelledby={`${stage.id}-title`}
       data-header-theme="dark"
-      style={{ backgroundColor: reduce ? "#104840" : background }}
-      className="relative overflow-x-clip pb-28 pt-28 text-cream outline-none md:pb-36 lg:pb-48 lg:pt-44"
+      className="relative overflow-x-clip bg-green pb-28 pt-28 text-cream outline-none md:pb-36 lg:pb-48 lg:pt-44"
     >
-      <div className="grid-editorial">
+      <motion.div
+        aria-hidden="true"
+        style={{ opacity: veil }}
+        className="pointer-events-none absolute inset-0 bg-blush motion-reduce:hidden"
+      />
+      <div className="grid-editorial relative">
         {/* Opening — number, moment, title */}
         <div className="col-span-full flex items-end justify-between gap-6 border-b border-cream/15 pb-10 lg:col-span-12">
-          <Reveal className="flex items-center gap-4">
-            <span className="label text-gold tabular-nums">Etapa {stage.number}</span>
-            <span aria-hidden="true" className="h-px w-10 bg-gold/60" />
-            <span className="label text-cream/70">{stage.period}</span>
+          <Reveal className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <span className="label whitespace-nowrap text-gold">Etapa {stage.number}</span>
+            <span aria-hidden="true" className="hidden h-px w-10 bg-gold/60 sm:block" />
+            <span className="label whitespace-nowrap text-cream/70">{stage.period}</span>
           </Reveal>
-          <NumberReveal className="display -mb-4 text-[96px] leading-[0.8] text-gold lg:-mb-6 lg:text-[180px]">
+          <NumberReveal className="display -mb-3 text-[88px] leading-[0.8] text-gold lg:-mb-6 lg:text-[180px]">
             {stage.number}
           </NumberReveal>
         </div>
@@ -93,6 +97,6 @@ export default function GrandDay({ stage }: { stage: WeddingStage }) {
           </div>
         )}
       </div>
-    </motion.section>
+    </section>
   );
 }

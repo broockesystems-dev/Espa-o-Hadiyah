@@ -67,7 +67,7 @@ export function StageProgressMobile({ active, tone }: StageNavigationProps) {
   return (
     <>
       <p
-        className={`label-sm tabular-nums lg:hidden ${tone === "dark" ? "text-cream/80" : "text-ink/70"}`}
+        className={`label-sm whitespace-nowrap tabular-nums lg:hidden ${tone === "dark" ? "text-cream/80" : "text-ink/70"}`}
         aria-live="polite"
       >
         {active < 0 ? (

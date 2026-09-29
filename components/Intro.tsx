@@ -38,7 +38,7 @@ export default function Intro() {
               </p>
             ))}
             <div className="flex items-baseline gap-6 border-t border-green/20 pt-6">
-              <span className="display text-[56px] leading-none text-green tabular-nums">
+              <span className="display text-[56px] leading-none text-green">
                 {String(TOTAL_STAGES).padStart(2, "0")}
               </span>
               <span className="label-sm text-muted">

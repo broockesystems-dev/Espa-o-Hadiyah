@@ -166,7 +166,7 @@ export const weddingTimeline: WeddingStage[] = [
     ],
     image: { src: "/images/stages/etapa-07.jpg", alt: "Detalhe de cabelo hidratado da noiva" },
     variant: "quiet",
-    tone: "blush",
+    tone: "cream",
   },
   {
     id: "etapa-08",

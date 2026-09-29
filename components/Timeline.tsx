@@ -15,10 +15,10 @@ export default function Timeline() {
       id="cronograma"
       data-header-theme="light"
       aria-labelledby="timeline-title"
-      className="bg-cream py-24 md:py-32 lg:py-40"
+      className="bg-cream pb-20 pt-24 md:pb-28 md:pt-32 lg:pb-32 lg:pt-40"
     >
       <div className="grid-editorial">
-        <Reveal className="col-span-full lg:col-span-5 lg:col-start-2">
+        <Reveal className="col-span-full md:col-span-5 lg:col-span-7 lg:col-start-2">
           <p className="label mb-6 text-gold">O cronograma</p>
           <h2 id="timeline-title" className="display text-[46px] text-green sm:text-[60px] lg:text-[76px]">
             Do primeiro passo

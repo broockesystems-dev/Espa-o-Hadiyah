@@ -27,7 +27,7 @@ export default function ProductionTimeline({ tracks }: { tracks: ProductionTrack
         {ticks.map((t) => (
           <span
             key={t}
-            className="label-sm absolute top-0 -translate-x-1/2 text-cream/40 tabular-nums first:translate-x-0 last:-translate-x-full"
+            className="label-sm absolute top-0 normal-case tracking-[0.12em] -translate-x-1/2 text-cream/40 tabular-nums first:translate-x-0 last:-translate-x-full"
             style={{ left: `${(t / scale) * 100}%` }}
           >
             {t}h

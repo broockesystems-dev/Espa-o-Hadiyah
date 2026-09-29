@@ -17,7 +17,7 @@ export default function Hero() {
       id="inicio"
       data-header-theme="dark"
       aria-labelledby="hero-title"
-      className="relative flex flex-col bg-green lg:grid lg:min-h-[100svh] lg:grid-cols-[45fr_55fr]"
+      className="relative flex flex-col bg-green lg:grid lg:min-h-[100svh] lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]"
     >
       {/* 1 — background */}
       <motion.div
@@ -79,7 +79,7 @@ export default function Hero() {
         <div>
           <motion.h1
             id="hero-title"
-            className="display text-[64px] leading-[0.9] sm:text-[84px] lg:text-[clamp(84px,8.4vw,144px)]"
+            className="display text-[64px] leading-[0.9] sm:text-[84px] lg:text-[clamp(84px,7.6vw,136px)]"
             {...fade(1.0, 36)}
           >
             {HERO.titleLines[0]}

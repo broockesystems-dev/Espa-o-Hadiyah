@@ -36,12 +36,12 @@ export default function Header() {
             aria-label={`${BRAND.name} — Guia da Noiva, voltar ao início`}
             onClick={() => setOpen(false)}
           >
-            <span className="label">{BRAND.name}</span>
+            <span className="label whitespace-nowrap">{BRAND.name}</span>
             <span aria-hidden="true" className="hidden h-3 w-px translate-y-0.5 bg-current opacity-30 md:block" />
             <span className="label hidden opacity-60 md:inline">Guia da Noiva</span>
           </a>
 
-          <div className="flex items-center gap-8 xl:gap-12">
+          <div className="flex items-center gap-5 sm:gap-8 xl:gap-12">
             <StageNavigation active={active} tone={tone} />
             {!open && <StageProgressMobile active={active} tone={tone} />}
             <button
@@ -50,7 +50,7 @@ export default function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="menu-overlay"
-              className="label group flex items-center gap-3 py-2"
+              className="label group flex shrink-0 items-center gap-3 py-2"
             >
               <span>{open ? "Fechar" : "Menu"}</span>
               <span aria-hidden="true" className="relative block h-2 w-6">
@@ -129,15 +129,17 @@ function MenuOverlay({ active, onClose }: { active: number; onClose: () => void 
                     // wait for the overlay to release the scroll lock
                     requestAnimationFrame(() => scrollToStage(stage.id));
                   }}
-                  className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 py-4 md:grid-cols-[4rem_1fr_auto] md:py-5"
+                  className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 py-4 md:grid-cols-[4rem_1fr_auto] md:py-4"
                 >
                   <span className={`label-sm tabular-nums ${i === active ? "text-gold" : "text-cream/50"}`}>
                     {stage.number}
                   </span>
-                  <span className="display text-[28px] transition-colors duration-500 group-hover:text-gold md:text-[40px]">
+                  <span className="display text-[26px] transition-colors duration-500 group-hover:text-gold md:text-[34px]">
                     {stage.title ?? stage.period}
                   </span>
-                  <span className="label-sm col-start-2 text-cream/50 md:col-start-3">{stage.period}</span>
+                  {stage.title && (
+                    <span className="label-sm col-start-2 text-cream/50 md:col-start-3">{stage.period}</span>
+                  )}
                 </a>
               </motion.li>
             ))}

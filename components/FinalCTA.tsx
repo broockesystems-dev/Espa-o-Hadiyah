@@ -30,8 +30,8 @@ export default function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h2 id="cta-title" className="display mt-12 text-[50px] text-green sm:text-[64px] lg:text-[clamp(64px,5.6vw,96px)]">
-            {FINAL_CTA.headline}
+          <h2 id="cta-title" className="display mt-12 text-[50px] text-green sm:text-[64px] lg:text-[clamp(56px,4.8vw,84px)]">
+            <span className="lg:whitespace-nowrap">{FINAL_CTA.headline}</span>
             <br />
             <em className="text-gold">{FINAL_CTA.headlineEmphasis}</em>
           </h2>

@@ -60,7 +60,7 @@ export function TimelineItem({ stage, index, active, orientation }: TimelineItem
           </span>
           <span className="flex h-[28px] items-center">{dot}</span>
           <span
-            className={`display mt-5 max-w-[9ch] text-[21px] leading-tight transition-colors duration-500 xl:text-[23px] ${
+            className={`display mt-5 max-w-[10ch] text-[21px] leading-tight transition-colors duration-500 xl:text-[23px] ${
               isFinal ? "italic text-gold" : reached ? "text-green" : "text-ink/70 group-hover:text-green"
             }`}
           >
