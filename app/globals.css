@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Guia da Noiva — design tokens
+   ───────────────────────────────────────────── */
+:root {
+  --green: #104840;
+  --green-dark: #0b3833;
+  --blush: #f3e1df;
+  --cream: #faf8f5;
+  --gold: #c99b4b;
+  --text: #243633;
+  --muted: #68746f;
+
+  --header-h: 72px;
+}
+
+@theme inline {
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--cream);
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ─────────────────────────────────────────────
+   Typographic system
+   ───────────────────────────────────────────── */
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+
+  .display em,
+  .display i {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .label-sm {
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .body-copy {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .hairline {
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+  }
+
+  /* Editorial grid: 12 columns desktop, 6 tablet, 4 mobile */
+  .grid-editorial {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 16px;
+    padding-inline: 20px;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 768px) {
+    .grid-editorial {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      column-gap: 24px;
+      padding-inline: 40px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-editorial {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 28px;
+      padding-inline: 64px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .grid-editorial {
+      padding-inline: 88px;
+    }
+  }
+}
+
+/* Image masks — editorial shapes instead of cards */
+@layer utilities {
+  .mask-arch {
+    border-radius: 999px 999px 0 0;
+  }
+  .mask-arch-soft {
+    border-radius: 999px 999px 28px 28px;
+  }
+  .mask-pill {
+    border-radius: 999px;
+  }
+  .mask-leaf {
+    border-radius: 0 180px 0 180px;
+  }
+  .mask-corner {
+    border-radius: 0 0 0 160px;
+  }
+  .mask-oval {
+    border-radius: 50%;
+  }
+}
